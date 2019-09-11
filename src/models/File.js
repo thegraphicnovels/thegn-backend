@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const FilesSchema = new mongoose.Schema({
   url: String,
-  post: {
+  portpolio: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Post",
+    ref: "Portpolio",
     required: true
   },
   user: {

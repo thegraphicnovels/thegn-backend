@@ -1,8 +1,0 @@
-type Mutation {
-  updatePost(
-    postId: String!
-    title: String
-    description: String
-    fileId: String
-  ): Post!
-}

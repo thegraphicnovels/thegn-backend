@@ -7,10 +7,10 @@ type User {
   updateAt: String
 }
 
-type Post {
+type Portpolio {
   _id: String
   title: String!
-  description: String!
+  description: String
   user: User!
   files: [File]
   views: Int
@@ -20,7 +20,7 @@ type Post {
 
 type File {
   _id: String
-  url: String
-  post: File
+  url: String!
+  portpolio: Portpolio!
   createAt: String!
 }

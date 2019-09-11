@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema({
+const PortpolioSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -31,5 +31,5 @@ const PostSchema = new mongoose.Schema({
   }
 });
 
-const model = mongoose.model("Post", PostSchema);
+const model = mongoose.model("Portpolio", PortpolioSchema);
 export default model;

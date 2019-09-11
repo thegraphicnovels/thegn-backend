@@ -1,0 +1,7 @@
+type Mutation {
+  uploadPortpolio(
+    title: String!
+    description: String
+    fileUrl: [String]
+  ): Portpolio!
+}

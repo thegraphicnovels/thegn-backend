@@ -1,3 +1,0 @@
-type Mutation {
-  uploadPostFile(postId: String!, url: String!): File!
-}
