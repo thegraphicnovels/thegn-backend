@@ -3,5 +3,6 @@ type Mutation {
     title: String!
     description: String
     fileUrl: [String]
+    tags: [String]
   ): Portpolio!
 }

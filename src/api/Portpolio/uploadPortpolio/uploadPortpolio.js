@@ -1,12 +1,19 @@
 import Portpolio from "../../../models/Portpolio";
 import File from "../../../models/File";
+import Tag from "../../../models/Tag";
 
 export default {
   Mutation: {
     uploadPortpolio: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { title, description, fileUrl } = args;
+      const { title, description, fileUrl, tags } = args;
+
+      if (tags && tags.length > 0) {
+        tags.forEach(async value => {
+          const tag = Tag.findOne({ value });
+        });
+      }
 
       let portpolio = new Portpolio({
         title,
@@ -31,20 +38,3 @@ export default {
     }
   }
 };
-
-// var bob = new Author({ name: "Bob Smith" });
-
-// bob.save(function(err) {
-//   if (err) return handleError(err);
-
-//   //Bob now exists, so lets create a story
-//   var story = new Story({
-//     title: "Bob goes sledding",
-//     author: bob._id // assign the _id from the our author Bob. This ID is created by default!
-//   });
-
-//   story.save(function(err) {
-//     if (err) return handleError(err);
-//     // Bob now has his story
-//   });
-// });
