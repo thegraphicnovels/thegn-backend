@@ -6,7 +6,8 @@ export default {
       const { id: _id } = args;
       const portpolio = await Portpolio.findById({ _id })
         .populate("files")
-        .populate("user");
+        .populate("user")
+        .populate("tags");
       return portpolio;
     }
   }

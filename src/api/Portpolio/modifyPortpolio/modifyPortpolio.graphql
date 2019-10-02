@@ -1,3 +1,8 @@
 type Mutation {
-  modifyPortpolio(id: String!, title: String!, description: String): String!
+  modifyPortpolio(
+    id: String!
+    title: String!
+    description: String
+    tags: [String]
+  ): String!
 }

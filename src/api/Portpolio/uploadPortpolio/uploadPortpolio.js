@@ -9,16 +9,11 @@ export default {
       const { user } = request;
       const { title, description, fileUrl, tags } = args;
 
-      if (tags && tags.length > 0) {
-        tags.forEach(async value => {
-          const tag = Tag.findOne({ value });
-        });
-      }
-
       let portpolio = new Portpolio({
         title,
         description,
-        user: user._id
+        user: user._id,
+        tags
       });
 
       fileUrl.forEach(async url => {
