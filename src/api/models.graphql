@@ -12,6 +12,7 @@ type Portpolio {
   title: String!
   description: String
   user: User!
+  thumbImg: String
   files: [File]
   views: Int
   tags: [Tag]

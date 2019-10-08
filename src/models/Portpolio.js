@@ -12,6 +12,7 @@ const PortpolioSchema = new mongoose.Schema({
     ref: "User",
     required: true
   },
+  thumbImg: String,
   files: [
     {
       type: mongoose.Schema.Types.ObjectId,
