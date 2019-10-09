@@ -7,11 +7,12 @@ export default {
     uploadPortpolio: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { title, description, fileUrl, tags } = args;
+      const { title, description, thumbImg, fileUrl, tags } = args;
 
       let portpolio = new Portpolio({
         title,
         description,
+        thumbImg,
         user: user._id,
         tags
       });

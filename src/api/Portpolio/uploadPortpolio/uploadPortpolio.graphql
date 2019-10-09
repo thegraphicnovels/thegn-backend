@@ -2,6 +2,7 @@ type Mutation {
   uploadPortpolio(
     title: String!
     description: String
+    thumbImg: String
     fileUrl: [String]
     tags: [String]
   ): Portpolio!
