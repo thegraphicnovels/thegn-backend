@@ -23,8 +23,8 @@ const server = new ApolloServer({
   context: ({ request }) => ({ request, isAuthenticated }),
   persistedQueries: {
     cache: new EnhancedRedis()
-  },
-  playground: false
+  }
+  // playground: false
 });
 
 server.applyMiddleware({ app });
