@@ -39,6 +39,7 @@
     "persistgraphql": "persistgraphql ../thegn-frontend/src/apollo/ src/extracted_queries.json --js --extension=js",
     "build": "babel src -d build",
     "postbuild": "cd src && copy ./api/**/*.graphql ../build/api/",
+    "prestart": "redis-server",
     "start": "node build/app.js"
   }
 }
