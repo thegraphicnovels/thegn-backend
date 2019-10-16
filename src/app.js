@@ -3,12 +3,12 @@ import "./db";
 import express from "express";
 import playground from "graphql-playground-middleware-express";
 import { ApolloServer } from "apollo-server-express";
+import { RedisCache } from "apollo-server-cache-redis";
 import logger from "morgan";
 import schema from "./schema";
 import "./passport";
 import { authenticateJwt } from "./passport";
 import { isAuthenticated } from "./middlewares";
-import EnhancedRedis from "./enhancedRedis";
 
 const PORT = process.env.PORT;
 
@@ -22,7 +22,7 @@ const server = new ApolloServer({
   schema,
   context: ({ request }) => ({ request, isAuthenticated }),
   persistedQueries: {
-    cache: new EnhancedRedis()
+    cache: new RedisCache(process.env.REDIS_URL)
   },
   playground: false
 });
