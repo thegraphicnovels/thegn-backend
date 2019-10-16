@@ -24,6 +24,7 @@ const server = new ApolloServer({
   persistedQueries: {
     cache: new RedisCache(process.env.REDIS_URL)
   },
+  introspection: true,
   playground: false
 });
 
