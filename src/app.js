@@ -20,7 +20,9 @@ app.use("/playground", playground({ endpoint: "/graphql" }));
 
 const server = new ApolloServer({
   schema,
-  context: ({ request }) => ({ request, isAuthenticated }),
+  context: ({ req: request }) => {
+    return { request, isAuthenticated };
+  },
   persistedQueries: {
     cache: new RedisCache(process.env.REDIS_URL)
   },
