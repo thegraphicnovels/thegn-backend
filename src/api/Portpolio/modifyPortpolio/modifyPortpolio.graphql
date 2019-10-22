@@ -3,6 +3,8 @@ type Mutation {
     id: String!
     title: String!
     description: String
+    thumbFileUrl: String
+    fileUrl: [String]
     tags: [String]
   ): String!
 }
