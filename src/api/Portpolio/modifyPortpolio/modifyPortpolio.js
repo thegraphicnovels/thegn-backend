@@ -14,6 +14,7 @@ export default {
       portpolio.description = description;
       portpolio.thumbImg = thumbFileUrl;
       portpolio.tags = tags;
+      portpolio.user = user._id;
       portpolio.files = [];
 
       for (let i = 0; i < fileUrl.length; i++) {
