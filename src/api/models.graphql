@@ -12,7 +12,6 @@ type Portpolio {
   title: String!
   description: String
   user: User!
-  mainImg: [String]
   thumbImg: String
   files: [File]
   views: Int
@@ -24,7 +23,9 @@ type Portpolio {
 type File {
   _id: String
   url: String!
-  portpolio: Portpolio!
+  portpolio: Portpolio
+  banner: Banner
+  user: User!
   createAt: String!
 }
 
@@ -40,4 +41,13 @@ type PortpolioPaging {
   portpolios: [Portpolio]
   totalPages: Int
   totalPortpolios: Int
+}
+
+type Banner {
+  _id: String
+  files: [File]
+  portpolio: Portpolio!
+  user: User!
+  createAt: String!
+  updateAt: String!
 }

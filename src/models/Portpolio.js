@@ -12,7 +12,6 @@ const PortpolioSchema = new mongoose.Schema({
     ref: "User",
     required: true
   },
-  mainImg: [String],
   thumbImg: String,
   files: [
     {

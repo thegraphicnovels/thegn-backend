@@ -1,6 +1,5 @@
 import Portpolio from "../../../models/Portpolio";
 import File from "../../../models/File";
-import { __importDefault } from "tslib";
 
 export default {
   Mutation: {

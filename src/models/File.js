@@ -4,8 +4,11 @@ const FilesSchema = new mongoose.Schema({
   url: String,
   portpolio: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Portpolio",
-    required: true
+    ref: "Portpolio"
+  },
+  banner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Banner"
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
