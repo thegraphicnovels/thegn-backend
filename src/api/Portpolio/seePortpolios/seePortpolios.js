@@ -7,6 +7,15 @@ export default {
 
       let query = {};
 
+      if (keyword) {
+        query = {
+          $or: [
+            { title: { $regex: keyword, $options: "i" } },
+            { description: { $regex: keyword, $options: "i" } }
+          ]
+        };
+      }
+
       if (tags) {
         query.tags = { _id: tags };
       }
