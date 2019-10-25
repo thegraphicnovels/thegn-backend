@@ -1,3 +1,3 @@
 type Mutation {
-  createUser(id: String, password: String, name: String): Boolean!
+  createUser(id: String!, password: String!, name: String!): Boolean!
 }

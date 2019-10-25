@@ -3,9 +3,10 @@ import Portpolio from "../../../models/Portpolio";
 export default {
   Query: {
     seePortpolios: async (_, args) => {
-      const { page, limit, tags } = args;
+      const { page, limit, tags, keyword } = args;
 
       let query = {};
+
       if (tags) {
         query.tags = { _id: tags };
       }
