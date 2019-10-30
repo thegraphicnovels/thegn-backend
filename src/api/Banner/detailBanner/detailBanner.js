@@ -3,10 +3,8 @@ import Banner from "../../../models/Banner";
 export default {
   Query: {
     detailBanner: async (_, args) => {
-      const { id: _id, portpolioId } = args;
-      const banner = await Banner.findOne({
-        $or: [{ _id }, { portpolio: portpolioId }]
-      })
+      const { id: _id } = args;
+      const banner = await Banner.findById({ _id })
         .populate("user")
         .populate("portpolio")
         .populate("files");

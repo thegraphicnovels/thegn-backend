@@ -45,8 +45,9 @@ type PortpolioPaging {
 
 type Banner {
   _id: String
+  title: String!
   files: [File]
-  portpolio: Portpolio!
+  portpolio: Portpolio
   user: User!
   createAt: String!
   updateAt: String!

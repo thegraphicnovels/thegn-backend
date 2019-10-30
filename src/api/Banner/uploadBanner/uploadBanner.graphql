@@ -1,3 +1,7 @@
 type Mutation {
-  uploadBanner(fileUrl: [String], portpolioId: String): Banner!
+  uploadBanner(
+    title: String!
+    fileUrl: [String!]!
+    portpolioId: String
+  ): Banner!
 }

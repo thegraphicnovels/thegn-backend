@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const BannerSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
   files: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -9,8 +13,7 @@ const BannerSchema = new mongoose.Schema({
   ],
   portpolio: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Portpolio",
-    required: true
+    ref: "Portpolio"
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

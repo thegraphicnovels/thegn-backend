@@ -6,11 +6,10 @@ export default {
     modifyBanner: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { id: _id, fileUrl, portpolioId } = args;
-
-      console.log(args);
+      const { id: _id, title, fileUrl, portpolioId } = args;
 
       const banner = await Banner.findById({ _id });
+      banner.title = title;
       banner.portpolio = portpolioId;
       banner.user = user._id;
       banner.files = [];

@@ -6,9 +6,10 @@ export default {
     uploadBanner: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { fileUrl, portpolioId } = args;
+      const { title, fileUrl, portpolioId } = args;
 
       const banner = new Banner({
+        title,
         user: user._id,
         portpolio: portpolioId
       });
