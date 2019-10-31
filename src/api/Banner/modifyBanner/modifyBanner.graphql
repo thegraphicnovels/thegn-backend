@@ -1,0 +1,8 @@
+type Mutation {
+  modifyBanner(
+    id: String!
+    title: String!
+    fileUrl: [String!]!
+    portpolioId: String
+  ): String!
+}

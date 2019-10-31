@@ -1,0 +1,3 @@
+type Mutation {
+  viewsPortpolio(id: String!): Boolean!
+}

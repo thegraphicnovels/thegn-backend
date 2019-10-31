@@ -1,23 +1,22 @@
 import Portpolio from "../../../models/Portpolio";
 import File from "../../../models/File";
-import Tag from "../../../models/Tag";
-
 export default {
   Mutation: {
     uploadPortpolio: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { title, description, fileUrl, tags } = args;
+      const { title, description, thumbFileUrl, fileUrl, tags } = args;
 
-      let portpolio = new Portpolio({
+      const portpolio = new Portpolio({
         title,
         description,
+        thumbImg: thumbFileUrl,
         user: user._id,
         tags
       });
 
       fileUrl.forEach(async url => {
-        let file = new File({
+        const file = new File({
           portpolio: portpolio._id,
           url,
           user: user._id

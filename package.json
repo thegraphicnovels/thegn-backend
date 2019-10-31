@@ -11,12 +11,16 @@
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.6.0",
+    "apollo-server-cache-memcached": "^0.6.3",
+    "apollo-server-cache-redis": "^1.1.4",
+    "apollo-server-express": "^2.9.6",
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "copy": "^0.3.2",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "graphql-playground-middleware-express": "^1.7.12",
     "graphql-tools": "^4.0.5",
-    "graphql-yoga": "^1.18.3",
     "merge-graphql-schemas": "^1.7.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.6.11",
@@ -25,7 +29,8 @@
     "nodemailer": "^6.3.0",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.6.0",
@@ -33,6 +38,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec babel-node src/app.js",
+    "persistgraphql": "persistgraphql ../thegn-frontend/src/apollo/ src/extracted_queries.json --js --extension=js",
     "build": "babel src -d build",
     "postbuild": "cd src && copy ./api/**/*.graphql ../build/api/",
     "start": "node build/app.js"

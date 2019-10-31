@@ -1,3 +1,8 @@
 type Query {
-  seePortpolios(page: Int, limit: Int, tags: [String]): PortpolioPaging!
+  seePortpolios(
+    page: Int
+    limit: Int
+    tags: [String]
+    keyword: String
+  ): PortpolioPaging!
 }

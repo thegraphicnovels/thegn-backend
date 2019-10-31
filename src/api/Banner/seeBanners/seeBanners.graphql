@@ -1,0 +1,3 @@
+type Query {
+  seeBanners(keyword: String): [Banner!]!
+}
