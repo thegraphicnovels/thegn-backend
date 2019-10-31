@@ -30,13 +30,18 @@ export default {
       }
 
       if (tags) {
-        query.tags = { _id: tags };
+        if (tags.length > 0) {
+          query.tags = { $in: tags };
+        } else {
+          query.tags = { _id: tags };
+        }
       }
 
       return Portpolio.find(query)
         .populate("files")
         .populate("user")
-        .populate("tags");
+        .populate("tags")
+        .sort({ updateAt: "desc" });
     }
   }
 };
