@@ -4,7 +4,7 @@ import Tag from "../../../models/Tag";
 export default {
   Query: {
     seePortpoliosList: async (_, args) => {
-      const { keyword } = args;
+      const { tags, keyword } = args;
 
       let query = {};
       if (keyword) {
@@ -27,6 +27,10 @@ export default {
             { tags: { $in: tagIds } }
           ]
         };
+      }
+
+      if (tags) {
+        query.tags = { _id: tags };
       }
 
       return Portpolio.find(query)
