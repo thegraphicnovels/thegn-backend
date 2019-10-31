@@ -28,7 +28,8 @@ export default {
           match,
           populate: "tags"
         })
-        .populate("files");
+        .populate("files")
+        .sort({ updateAt: "desc" });
     }
   }
 };
