@@ -10,9 +10,12 @@ export default {
 
       const banner = new Banner({
         title,
-        user: user._id,
-        portpolio: portpolioId
+        user: user._id
       });
+
+      if (portpolioId) {
+        banner.portpolio = portpolioId;
+      }
 
       fileUrl.forEach(async url => {
         const file = new File({
