@@ -17,6 +17,8 @@ export default {
 
       if (!portpolioId) {
         banner.portpolio = null;
+      } else {
+        banner.portpolio = portpolioId;
       }
 
       for (let i = 0; i < fileUrl.length; i++) {
