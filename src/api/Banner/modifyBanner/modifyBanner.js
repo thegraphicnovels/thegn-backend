@@ -13,6 +13,7 @@ export default {
       banner.portpolio = portpolioId;
       banner.user = user._id;
       banner.files = [];
+      banner.updateAt = new Date();
 
       for (let i = 0; i < fileUrl.length; i++) {
         const file = await File.findOne({ banner: _id, url: fileUrl[i] });

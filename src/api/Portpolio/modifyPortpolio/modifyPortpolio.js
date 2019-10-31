@@ -15,6 +15,7 @@ export default {
       portpolio.tags = tags;
       portpolio.user = user._id;
       portpolio.files = [];
+      portpolio.updateAt = new Date();
 
       for (let i = 0; i < fileUrl.length; i++) {
         const file = await File.findOne({ portpolio: _id, url: fileUrl[i] });
