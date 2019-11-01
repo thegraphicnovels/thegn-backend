@@ -16,7 +16,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(authenticateJwt);
 //product 일시 주석처리할 것.
-app.use("/playground", playground({ endpoint: "/graphql" }));
+// app.use("/playground", playground({ endpoint: "/graphql" }));
 
 const server = new ApolloServer({
   schema,
