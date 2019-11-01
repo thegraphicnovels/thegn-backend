@@ -9,6 +9,7 @@ import schema from "./schema";
 import "./passport";
 import { authenticateJwt } from "./passport";
 import { isAuthenticated } from "./middlewares";
+import { express as voyagerMiddleware } from "graphql-voyager/middleware";
 
 const PORT = process.env.PORT;
 
@@ -17,6 +18,7 @@ app.use(logger("dev"));
 app.use(authenticateJwt);
 //product 일시 주석처리할 것.
 // app.use("/playground", playground({ endpoint: "/graphql" }));
+// app.use("/model", voyagerMiddleware({ endpointUrl: "/graphql" }));
 
 const server = new ApolloServer({
   schema,
