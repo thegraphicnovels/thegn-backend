@@ -26,7 +26,31 @@ const server = new ApolloServer({
     return { request, isAuthenticated };
   },
   persistedQueries: {
-    cache: new RedisCache(process.env.REDIS_URL)
+    cache: new RedisCache({
+      connectTimeout: 5000,
+      reconnectOnError: err => {
+        console.log("Reconnect on error", err);
+        var targetError = "READONLY";
+        if (err.message.slice(0, targetError.length) === targetError) {
+          // Only reconnect when the error starts with "READONLY"
+          return true;
+        } else {
+          return false;
+        }
+      },
+      retryStrategy: times => {
+        console.log("Redis Retry", times);
+        if (times >= 3) {
+          return undefined;
+        }
+        var delay = Math.min(times * 50, 2000);
+        return delay;
+      },
+      socket_keepalive: false,
+      host: process.env.REDIS_HOST || "127.0.0.1",
+      port: process.env.REDIS_PORT || 6379,
+      password: process.env.REDIS_PASSWORD || ""
+    })
   },
   introspection: true,
   playground: false
