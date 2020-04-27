@@ -6,23 +6,16 @@ export default {
     createUser: async (_, args) => {
       const { id, name, password } = args;
       const exists = await User.exists({
-        OR: [
-          {
-            id
-          },
-          {
-            name
-          }
-        ]
+        id,
       });
 
       if (exists) {
-        throw Error("This id / name is already taken");
+        throw Error("This ID is already taken");
       } else {
         const hashedPassword = await hashPassword(password);
         await User.create({ id, name, password: hashedPassword });
         return true;
       }
-    }
-  }
+    },
+  },
 };
