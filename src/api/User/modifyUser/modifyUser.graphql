@@ -1,3 +1,8 @@
 type Mutation {
-  modifyUser(id: String!, password: String, name: String): User!
+  modifyUser(
+    id: String!
+    oPassword: String
+    cPassword: String
+    name: String!
+  ): Boolean!
 }
