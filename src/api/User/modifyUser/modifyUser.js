@@ -1,31 +1,43 @@
 import User from "../../../models/User";
-import { hashPassword } from "../../../utils";
+import { hashPassword, comparePassword } from "../../../utils";
 
 export default {
   Mutation: {
     modifyUser: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { user } = request;
-      const { id, password, name } = args;
+      const { id, oPassword, cPassword, name } = args;
 
-      const oUser = await User.findOne({ id });
+      const oUser = await User.findOne({ _id: id });
 
-      if (password) {
-        const hashedPassword = await hashPassword(password);
+      if (cPassword && !oPassword) {
+        throw Error("Original Password Insert");
+      }
+
+      if (cPassword && oPassword) {
+        const checkPassword = await comparePassword(oPassword, oUser.password);
+
+        console.log(checkPassword);
+
+        if (!checkPassword) {
+          throw Error("You Passwords do not match");
+        }
+
+        const hashedPassword = await hashPassword(cPassword);
+
         oUser.password = hashedPassword;
       } else {
-        oUser.password = user.password;
+        oUser.password = oUser.password;
       }
 
       if (name) {
         oUser.name = name;
       } else {
-        oUser.name = user.name;
+        oUser.name = oUser.name;
       }
 
       oUser.save();
 
-      return oUser;
-    }
-  }
+      return true;
+    },
+  },
 };
