@@ -10,7 +10,7 @@ export default {
 
       if (keyword) {
         const tagData = await Tag.find({
-          value: { $regex: keyword, $options: "i" }
+          value: { $regex: keyword, $options: "i" },
         });
 
         const tagIds = [];
@@ -25,18 +25,20 @@ export default {
           $or: [
             { title: { $regex: keyword, $options: "i" } },
             { description: { $regex: keyword, $options: "i" } },
-            { tags: { $in: tagIds } }
-          ]
+            { tags: { $in: tagIds } },
+          ],
         };
       }
 
       if (tags) {
-        query.tags = { _id: tags };
+        if (tags.length > 0) {
+          query.tags = { _id: tags };
+        }
       }
 
       let option = {
         populate: ["files", "user", "tags"],
-        sort: { updateAt: "desc" }
+        sort: { updateAt: "desc" },
       };
       if (page && limit) {
         option.page = page;
@@ -50,6 +52,6 @@ export default {
       );
 
       return portpolio;
-    }
-  }
+    },
+  },
 };
